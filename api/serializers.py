@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from api.models import Student, Programme, Lecturer, Marks, Parents, TuitionFee
+from api.models import Student, Programme, Lecturer, Marks, Parents, TuitionFee, Course
 
 
 # Creating serializer for User Registration
@@ -26,7 +26,13 @@ class StudentSerializer(serializers.ModelSerializer):
 class ProgrammeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Programme
-        fields = ["id", "name", "created_at", "updated_at"]
+        fields = ["id", "name", "duration", "created_at", "updated_at"]
+
+
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ["id", "name", "programme", "created_at", "updated_at"]
 
 
 class LecturerSerializer(serializers.ModelSerializer):
@@ -50,4 +56,4 @@ class ParentsSerializer(serializers.ModelSerializer):
 class TuitionFeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TuitionFee
-        fields = ["id", "tuitionFee", "created_at", "updated_at"]
+        fields = ["id", "programme", "tuitionFee", "created_at", "updated_at"]
