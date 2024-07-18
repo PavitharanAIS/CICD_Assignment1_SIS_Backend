@@ -13,7 +13,7 @@ jobs:
           name: run tests
           command: |
             export verceldb=test_verceldb_circleci
-            python manage.py test --noinput
+            python manage.py test
 
 workflows:
   build-and-test-workflow:

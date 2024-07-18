@@ -14,6 +14,21 @@ jobs:
       matrix:
         python-version: [3.12.3]
 
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: verceldb_github
+          POSTGRES_USER: default
+          POSTGRES_PASSWORD: Qm6AXbC4vwRB
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python-version }}
@@ -26,4 +41,4 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test --noinput
+        python manage.py test
