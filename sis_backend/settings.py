@@ -103,14 +103,25 @@ WSGI_APPLICATION = 'sis_backend.wsgi.app'
 #     }
 # }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": 'verceldb',
+#         "USER": 'default',
+#         "PASSWORD": 'Qm6AXbC4vwRB',
+#         "HOST": 'ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech',
+#         "PORT": '5432',
+#     }
+# }
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": 'verceldb',
-        "USER": 'default',
-        "PASSWORD": 'Qm6AXbC4vwRB',
-        "HOST": 'ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech',
-        "PORT": '5432',
+        "NAME": os.environ.get('DB_NAME', 'verceldb'),
+        "USER": os.environ.get('DB_USER', 'default'),
+        "PASSWORD": os.environ.get('DB_PASSWORD', 'Qm6AXbC4vwRB'),
+        "HOST": os.environ.get('DB_HOST', 'ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech'),
+        "PORT": os.environ.get('DB_PORT', '5432'),
     }
 }
 
