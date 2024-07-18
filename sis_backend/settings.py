@@ -20,7 +20,6 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -45,8 +44,6 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
-
-
 
 # Application definition
 
@@ -96,8 +93,6 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'sis_backend.wsgi.application'
 WSGI_APPLICATION = 'sis_backend.wsgi.app'
 
-
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -113,12 +108,11 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": 'verceldb',
         "USER": 'default',
-        "PASSWORD": 'WDf2ota9bPzd',
-        "HOST": 'ep-late-heart-a7e1nuzp.ap-southeast-2.aws.neon.tech',
+        "PASSWORD": 'Qm6AXbC4vwRB',
+        "HOST": 'ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech',
         "PORT": '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -138,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -149,7 +142,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
