@@ -9,7 +9,7 @@ from .models import Student, Programme, Lecturer, Marks, TuitionFee
 
 class StudentListCreate(generics.ListCreateAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -37,7 +37,7 @@ class StudentDelete(generics.DestroyAPIView):
 
 class ProgrammeListCreate(generics.ListCreateAPIView):
     serializer_class = ProgrammeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -65,7 +65,7 @@ class ProgrammeDelete(generics.DestroyAPIView):
 
 class LecturerListCreate(generics.ListCreateAPIView):
     serializer_class = LecturerSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -93,7 +93,7 @@ class LecturerDelete(generics.DestroyAPIView):
 
 class MarksListCreate(generics.ListCreateAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -110,7 +110,7 @@ class MarksListCreate(generics.ListCreateAPIView):
 
 class MarksDelete(generics.DestroyAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -121,7 +121,7 @@ class MarksDelete(generics.DestroyAPIView):
 
 class TuitionFeeListCreate(generics.ListCreateAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
@@ -138,7 +138,7 @@ class TuitionFeeListCreate(generics.ListCreateAPIView):
 
 class TuitionFeeDelete(generics.DestroyAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
