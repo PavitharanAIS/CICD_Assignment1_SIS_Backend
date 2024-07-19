@@ -8,12 +8,8 @@ urlpatterns = [
     path('lecturer/<int:pk>', views.LecturerDelete.as_view(), name='lecturer-delete'),
     path('programme/', views.ProgrammeListCreate.as_view(), name='programme-list'),
     path('programme/<int:pk>', views.ProgrammeDelete.as_view(), name='programme-delete'),
-    path('course/', views.CourseListCreate.as_view(), name='course-list'),
-    path('course/<int:pk>', views.CourseDelete.as_view(), name='course-delete'),
     path('marks/', views.MarksListCreate.as_view(), name='marks-list'),
     path('marks/<int:pk>', views.MarksDelete.as_view(), name='marks-delete'),
-    path('parents/', views.ParentsListCreate.as_view(), name='parents-list'),
-    path('parents/<int:pk>', views.ParentsDelete.as_view(), name='parents-delete'),
     path('tuitionfee/', views.TuitionFeeListCreate.as_view(), name='tuitionfee-list'),
     path('tuitionfee/<int:pk>', views.TuitionFeeDelete.as_view(), name='tuitionfee-delete'),
 ]

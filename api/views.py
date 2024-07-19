@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer, StudentSerializer, ProgrammeSerializer, LecturerSerializer, MarksSerializer, \
-    ParentsSerializer, TuitionFeeSerializer, CourseSerializer
+    TuitionFeeSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Student, Programme, Lecturer, Marks, Parents, TuitionFee, Course
+from .models import Student, Programme, Lecturer, Marks, TuitionFee
 
 
 class StudentListCreate(generics.ListCreateAPIView):
@@ -63,34 +63,6 @@ class ProgrammeDelete(generics.DestroyAPIView):
         return Programme.objects.all()
 
 
-class CourseListCreate(generics.ListCreateAPIView):
-    serializer_class = CourseSerializer
-    permission_classes = [AllowAny]
-
-    def get_queryset(self):
-        user = self.request.user
-
-        # Double check here 41:13
-        return Course.objects.all()
-
-    def perform_create(self, serializer):
-        if serializer.is_valid():
-            serializer.save()
-        else:
-            print(serializer.errors)
-
-
-class CourseDelete(generics.DestroyAPIView):
-    serializer_class = CourseSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        user = self.request.user
-
-        # Double check here 41:13
-        return Course.objects.all()
-
-
 class LecturerListCreate(generics.ListCreateAPIView):
     serializer_class = LecturerSerializer
     permission_classes = [AllowAny]
@@ -138,41 +110,13 @@ class MarksListCreate(generics.ListCreateAPIView):
 
 class MarksDelete(generics.DestroyAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        user = self.request.user
-
-        # Double check here 41:13
-        return Marks.objects.all()
-
-
-class ParentsListCreate(generics.ListCreateAPIView):
-    serializer_class = ParentsSerializer
     permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
 
         # Double check here 41:13
-        return Parents.objects.all()
-
-    def perform_create(self, serializer):
-        if serializer.is_valid():
-            serializer.save()
-        else:
-            print(serializer.errors)
-
-
-class ParentsDelete(generics.DestroyAPIView):
-    serializer_class = ParentsSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        user = self.request.user
-
-        # Double check here 41:13
-        return Parents.objects.all()
+        return Marks.objects.all()
 
 
 class TuitionFeeListCreate(generics.ListCreateAPIView):
@@ -214,5 +158,3 @@ class CreateUserView(generics.CreateAPIView):
 
         # Double check here 41:13
         return User.objects.all()
-
-# Create your views here.

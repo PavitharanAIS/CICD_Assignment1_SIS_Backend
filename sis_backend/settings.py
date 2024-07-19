@@ -119,8 +119,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.environ.get('DB_NAME', 'verceldb'),
         "USER": os.environ.get('DB_USER', 'default'),
-        "PASSWORD": os.environ.get('DB_PASSWORD', 'Qm6AXbC4vwRB'),
-        "HOST": os.environ.get('DB_HOST', 'ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech'),
+        "PASSWORD": os.environ.get('DB_PASSWORD', 'zuUo4Xtqy5nI'),
+        "HOST": os.environ.get('DB_HOST', 'ep-bold-cloud-a70ec02k.ap-southeast-2.aws.neon.tech'),
         "PORT": os.environ.get('DB_PORT', '5432'),
     }
 }

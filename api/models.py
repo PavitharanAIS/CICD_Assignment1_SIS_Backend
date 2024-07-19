@@ -13,16 +13,9 @@ class Programme(models.Model):
         return self.name
 
 
-class Course(models.Model):
-    name = models.CharField(max_length=100)
-    programme = models.ForeignKey(Programme, on_delete=models.CASCADE, related_name='courseProgramme')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
 class Lecturer(models.Model):
     name = models.CharField(max_length=100)
+    lecturer_programme = models.ForeignKey(Programme, on_delete=models.CASCADE, related_name='lecturerProgramme')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -37,16 +30,6 @@ class Marks(models.Model):
 
     def __str__(self):
         return self.programmeMarks
-
-
-class Parents(models.Model):
-    fatherName = models.CharField(max_length=100)
-    motherName = models.CharField(max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.fatherName
 
 
 class TuitionFee(models.Model):
@@ -64,10 +47,10 @@ class Student(models.Model):
     roll = models.IntegerField()
     address = models.CharField(max_length=100)
     programme = models.ForeignKey(Programme, on_delete=models.CASCADE, related_name='programme')
-    lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecturer')
-    marks = models.ForeignKey(Marks, on_delete=models.CASCADE, related_name='marks')
-    parents = models.ForeignKey(Parents, on_delete=models.CASCADE, related_name='parents')
     tuitionFee = models.ForeignKey(TuitionFee, on_delete=models.CASCADE, related_name='fee')
+    lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE, related_name='lecturer')
+    attendance = models.IntegerField()
+    marks = models.ForeignKey(Marks, on_delete=models.CASCADE, related_name='marks')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

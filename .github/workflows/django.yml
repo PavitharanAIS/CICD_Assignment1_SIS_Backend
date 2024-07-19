@@ -43,8 +43,8 @@ jobs:
       env:
         DB_NAME: test_verceldb_github
         DB_USER: default
-        DB_PASSWORD: Qm6AXbC4vwRB
-        DB_HOST: ep-purple-frog-a7uithoj.ap-southeast-2.aws.neon.tech
+        DB_PASSWORD: zuUo4Xtqy5nI
+        DB_HOST: ep-bold-cloud-a70ec02k.ap-southeast-2.aws.neon.tech
         DB_PORT: 5432
       run: |
         python manage.py test
