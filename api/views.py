@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer, StudentSerializer, ProgrammeSerializer, LecturerSerializer, MarksSerializer, \
     TuitionFeeSerializer
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny, AllowAny
 from .models import Student, Programme, Lecturer, Marks, TuitionFee
 
 
 class StudentListCreate(generics.ListCreateAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -24,9 +24,9 @@ class StudentListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
-class StudentDelete(generics.DestroyAPIView):
+class StudentDelete(generics.RetrieveDestroyAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -37,12 +37,15 @@ class StudentDelete(generics.DestroyAPIView):
 
 class ProgrammeListCreate(generics.ListCreateAPIView):
     serializer_class = ProgrammeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
 
-        # Double check here 41:13
+        ids = self.request.query_params.get('ids')
+        if ids:
+            ids = list(map(int, ids.split(',')))
+            return Programme.objects.filter(id__in=ids)
         return Programme.objects.all()
 
     def perform_create(self, serializer):
@@ -52,9 +55,9 @@ class ProgrammeListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
-class ProgrammeDelete(generics.DestroyAPIView):
+class ProgrammeDelete(generics.RetrieveDestroyAPIView):
     serializer_class = ProgrammeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -65,12 +68,15 @@ class ProgrammeDelete(generics.DestroyAPIView):
 
 class LecturerListCreate(generics.ListCreateAPIView):
     serializer_class = LecturerSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
 
-        # Double check here 41:13
+        ids = self.request.query_params.get('ids')
+        if ids:
+            ids = list(map(int, ids.split(',')))
+            return Lecturer.objects.filter(id__in=ids)
         return Lecturer.objects.all()
 
     def perform_create(self, serializer):
@@ -80,9 +86,9 @@ class LecturerListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
-class LecturerDelete(generics.DestroyAPIView):
+class LecturerDelete(generics.RetrieveDestroyAPIView):
     serializer_class = LecturerSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -93,12 +99,15 @@ class LecturerDelete(generics.DestroyAPIView):
 
 class MarksListCreate(generics.ListCreateAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
 
-        # Double check here 41:13
+        ids = self.request.query_params.get('ids')
+        if ids:
+            ids = list(map(int, ids.split(',')))
+            return Marks.objects.filter(id__in=ids)
         return Marks.objects.all()
 
     def perform_create(self, serializer):
@@ -108,9 +117,9 @@ class MarksListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
-class MarksDelete(generics.DestroyAPIView):
+class MarksDelete(generics.RetrieveDestroyAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -121,12 +130,15 @@ class MarksDelete(generics.DestroyAPIView):
 
 class TuitionFeeListCreate(generics.ListCreateAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
 
-        # Double check here 41:13
+        ids = self.request.query_params.get('ids')
+        if ids:
+            ids = list(map(int, ids.split(',')))
+            return TuitionFee.objects.filter(id__in=ids)
         return TuitionFee.objects.all()
 
     def perform_create(self, serializer):
@@ -136,9 +148,9 @@ class TuitionFeeListCreate(generics.ListCreateAPIView):
             print(serializer.errors)
 
 
-class TuitionFeeDelete(generics.DestroyAPIView):
+class TuitionFeeDelete(generics.RetrieveDestroyAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user

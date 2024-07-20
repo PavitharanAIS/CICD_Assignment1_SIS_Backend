@@ -16,13 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-class StudentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Student
-        fields = ["id", "name", "roll", "address", "programme", "tuitionFee", "lecturer", "attendance", "marks",
-                  "created_at", "updated_at"]
-
-
 class ProgrammeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Programme
@@ -44,4 +37,11 @@ class MarksSerializer(serializers.ModelSerializer):
 class TuitionFeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = TuitionFee
-        fields = ["id", "programme", "tuitionFee", "created_at", "updated_at"]
+        fields = ["id", "programme", "fee", "created_at", "updated_at"]
+
+
+class StudentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Student
+        fields = ["id", "name", "roll", "address", "programme", "tuitionFee", "lecturer", "attendance", "marks",
+                  "created_at", "updated_at"]
