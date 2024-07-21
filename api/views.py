@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 from rest_framework import generics
 from .serializers import UserSerializer, StudentSerializer, ProgrammeSerializer, LecturerSerializer, MarksSerializer, \
     TuitionFeeSerializer
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, AllowAny
 from .models import Student, Programme, Lecturer, Marks, TuitionFee
 
 
 class StudentListCreate(generics.ListCreateAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -25,7 +25,7 @@ class StudentListCreate(generics.ListCreateAPIView):
 
 class StudentDelete(generics.RetrieveDestroyAPIView):
     serializer_class = StudentSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -36,7 +36,7 @@ class StudentDelete(generics.RetrieveDestroyAPIView):
 
 class ProgrammeListCreate(generics.ListCreateAPIView):
     serializer_class = ProgrammeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -56,7 +56,7 @@ class ProgrammeListCreate(generics.ListCreateAPIView):
 
 class ProgrammeDelete(generics.RetrieveDestroyAPIView):
     serializer_class = ProgrammeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -67,7 +67,7 @@ class ProgrammeDelete(generics.RetrieveDestroyAPIView):
 
 class LecturerListCreate(generics.ListCreateAPIView):
     serializer_class = LecturerSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -87,7 +87,7 @@ class LecturerListCreate(generics.ListCreateAPIView):
 
 class LecturerDelete(generics.RetrieveDestroyAPIView):
     serializer_class = LecturerSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -98,7 +98,7 @@ class LecturerDelete(generics.RetrieveDestroyAPIView):
 
 class MarksListCreate(generics.ListCreateAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -118,7 +118,7 @@ class MarksListCreate(generics.ListCreateAPIView):
 
 class MarksDelete(generics.RetrieveDestroyAPIView):
     serializer_class = MarksSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -129,7 +129,7 @@ class MarksDelete(generics.RetrieveDestroyAPIView):
 
 class TuitionFeeListCreate(generics.ListCreateAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
@@ -149,7 +149,7 @@ class TuitionFeeListCreate(generics.ListCreateAPIView):
 
 class TuitionFeeDelete(generics.RetrieveDestroyAPIView):
     serializer_class = TuitionFeeSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def get_queryset(self):
         user = self.request.user
