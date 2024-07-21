@@ -6,7 +6,7 @@ from rest_framework.test import APITestCase
 from django.contrib.auth.models import User
 
 
-#Testing for User Registration with Token
+#Test for User Registration with Token
 class CreateUserViewTests(TestCase):
     def setUp(self):
         self.url = reverse('register')  # Ensure this name matches your URL pattern name for CreateUserView
